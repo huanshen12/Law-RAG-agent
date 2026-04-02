@@ -18,3 +18,8 @@ async def search_law(query: str):
 async def search_missing(query: str):
     res = await missing_retriever.ainvoke(query)
     return res
+async def search_missing_with_source(query: str, source: str, k: int = 2):
+    retriever = vector_store.as_retriever(
+        search_kwargs={"k": k, "filter": {"source": source}}
+    )
+    return await retriever.ainvoke(query)
