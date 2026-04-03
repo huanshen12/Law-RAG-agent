@@ -11,6 +11,7 @@ llm = ChatOpenAI(
     model=doubao_llm,
     api_key=API_KEY,
     base_url=os.getenv("base_url"),
+    streaming=True,
 )
 
 embeddings = DashScopeEmbeddings(
